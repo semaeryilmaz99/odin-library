@@ -7,4 +7,4 @@
 # Lesson Learned
 
 - Using constructor function to create objects
-- Using and styling <dialog> the first time. It's awesome!
+- Using and styling dialog element the first time. It's awesome!
