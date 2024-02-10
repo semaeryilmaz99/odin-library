@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap");
+
 *,
 *::before,
 *::after {
@@ -51,7 +54,7 @@ ul {
   padding: 2rem;
 }
 
-.header {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,12 +72,13 @@ ul {
 }
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-.books > li {
+.book-card {
   background-color: bisque;
   color: black;
   padding: 1rem;
@@ -83,22 +87,42 @@ ul {
   flex-direction: column;
   gap: 1rem;
 }
-.books > li > span:first-child {
+
+.book-card .body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.book-card .title {
+  font-family: "Jim Nightshade", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+}
+.book-card .author {
   font-weight: 700;
+  text-align: center;
 }
-.footer {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
+
+.book-card .footer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
+.book-card .read-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background-color: green;
+  box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
 .buttons {
   display: flex;
   gap: 1rem;
 }
+
 .add-btn,
 .filter-btn {
   width: 50px;
@@ -107,4 +131,83 @@ ul {
   border: 3px solid white;
   background-color: transparent;
   cursor: pointer;
+}
+
+.new-book-modal {
+  padding: 2rem;
+  border-radius: 5px;
+  border: none;
+  position: fixed;
+}
+.new-book-modal::backdrop {
+  background-color: rgba(22, 22, 22, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.new-book-modal .close-modal-btn {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(228, 70, 70);
+  color: white;
+  display: grid;
+  place-content: center;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.new-book-modal form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.new-book-modal .form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  &.row {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.new-book-modal label {
+  font-weight: 700;
+}
+
+.new-book-modal input:not([type="checkbox"]) {
+  padding: 0.7rem;
+  border: 1px solid #005142;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.new-book-modal input[type="checkbox"] {
+  width: max-content;
+  width: 20px;
+  height: 20px;
+}
+.new-book-modal button[type="submit"] {
+  padding: 0.9rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #005142;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
 }
