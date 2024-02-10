@@ -9,20 +9,16 @@
   <body>
     <div class="container">
       <header>
-        <div class="logo">My library</div>
+        <h1 class="logo">My library</h1>
         <div class="buttons">
           <button class="add-btn" aria-label="add">
             <img src="./add.svg" alt="" />
-          </button>
-          <button class="filter-btn" aria-label="filter">
-            <img src="./filter.svg" alt="" />
           </button>
         </div>
       </header>
       <main>
         <ul class="books"></ul>
       </main>
-      <footer>Created by Chris Bui</footer>
       <dialog id="new-book-modal" class="new-book-modal">
         <button class="close-modal-btn">
           <img src="./close.svg" alt="" />
@@ -46,7 +42,7 @@
           </div>
           <div class="form-control row">
             <label for="read">Have read?</label>
-            <input type="checkbox" name="read" id="read" required />
+            <input type="checkbox" name="read" id="read" />
           </div>
           <button type="submit">Add</button>
         </form>

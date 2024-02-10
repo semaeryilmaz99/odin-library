@@ -9,49 +9,41 @@ function Book(title, author, pages, read, imgUrl) {
 }
 // FAKE BOOK
 const book1 = new Book(
-  "Harry Potter",
+  "Chamber Of Secrets",
   "JK Rowling",
   555,
   false,
-  "https://m.media-amazon.com/images/I/91-LL7OnDCL._AC_UF1000,1000_QL80_.jpg"
+  "https://ew.com/thmb/MaxHBP4uhvg9_3eNeWgx_SOSku0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/9781408855669-6cfb2099b6e84a4899ce368d6facc242.jpg"
 );
 const book2 = new Book(
-  "Learn",
+  "Goblet of Fire",
   "JK Rowling",
   555,
   true,
   "https://m.media-amazon.com/images/I/71-CKpDxEYL._AC_UF1000,1000_QL80_.jpg"
 );
 const book3 = new Book(
-  "Calm",
-  "JK Rowling",
+  "Fellowship of the ring",
+  "John Ronald",
   555,
   false,
   "https://m.media-amazon.com/images/I/813UBZ-O8sL._AC_UF1000,1000_QL80_.jpg"
 );
 const book4 = new Book(
-  "Software Engineer",
-  "JK Rowling",
+  "Whitby Rock",
+  "Kev Freeman",
   555,
   true,
   "https://miblart.com/wp-content/uploads/2020/12/new-cover-mibl-2.jpeg"
 );
-const book5 = new Book(
-  "Discipline",
-  "JK Rowling",
-  555,
-  true,
-  "https://bukovero.com/wp-content/uploads/2016/07/Harry_Potter_and_the_Cursed_Child_Special_Rehearsal_Edition_Book_Cover.jpg"
-);
 
 // Add FAKE BOOK to library for displaying purpose.
-myLibrary.push(book1, book2, book3, book4, book5);
+myLibrary.push(book1, book2, book3, book4);
 
+const bookList = document.querySelector(".books");
 const newBookModal = document.querySelector("#new-book-modal");
 const addBookForm = document.querySelector("#add-form");
 const addBookBtn = document.querySelector(".add-btn");
-const filterBtn = document.querySelector(".filter-btn");
-const bookList = document.querySelector(".books");
 const closeModalBtn = document.querySelector(".close-modal-btn");
 
 function addBookToLibrary(newBook) {
@@ -114,6 +106,11 @@ function repaintBookListToScreen() {
   displayAllBook();
 }
 
+function closeModal(e) {
+  addBookForm.reset();
+  newBookModal.close();
+}
+
 addBookBtn.addEventListener("click", (e) => {
   newBookModal.showModal();
 });
@@ -146,12 +143,8 @@ bookList.addEventListener("click", (e) => {
   });
 });
 
-function closeModal(e) {
-  addBookForm.reset();
-  newBookModal.close();
-}
 closeModalBtn.addEventListener("click", closeModal);
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   displayAllBook();
 });
