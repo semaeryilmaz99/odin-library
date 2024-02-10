@@ -108,6 +108,8 @@ header {
   margin-top: 2rem;
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
 }
 .book-card .read-btn {
   width: 20px;
@@ -117,6 +119,16 @@ header {
   background-color: green;
   box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  margin-left: auto;
+}
+.book-card .delete-book-btn {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  & .trash-icon {
+    height: 30px;
+  }
 }
 
 .buttons {

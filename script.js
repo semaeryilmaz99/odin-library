@@ -70,21 +70,29 @@ function createElementWith(type, className, textContent) {
 // UI
 function createBookItem(book) {
   const bookCard = createElementWith("li", "book-card");
+
   // CARD IMAGE
   const image = createElementWith("img", "image", book.imgUrl);
   image.setAttribute("alt", book.title);
   image.setAttribute("src", book.imgUrl);
+
   // CARD BODY
   const body = createElementWith("div", "body");
   const title = createElementWith("span", "title", book.title);
   const author = createElementWith("span", "author", book.author);
   body.append(title, author);
+
   // CARD FOOTER
   const footer = createElementWith("div", "footer");
   const pages = createElementWith("span", "pages", `${book.pages} pages`);
   const readStatus = createElementWith("button", "read-btn");
   readStatus.style.backgroundColor = book.read ? "green" : "orangered";
-  footer.append(pages, readStatus);
+  const deleteBookBtn = createElementWith("button", "delete-book-btn");
+  const trashIcon = createElementWith("img", "trash-icon");
+  trashIcon.setAttribute("src", "./trash.svg");
+  deleteBookBtn.appendChild(trashIcon);
+  footer.append(pages, readStatus, deleteBookBtn);
+
   // APPEND TO BOOK CARD
   bookCard.append(image, body, footer);
   return bookCard;
@@ -135,10 +143,16 @@ bookList.addEventListener("click", (e) => {
   const bookTitle = e.target
     .closest(".book-card")
     .querySelector(".title").textContent;
-  myLibrary.forEach((book, index) => {
+  myLibrary.forEach((book) => {
     if (book.title === bookTitle) {
-      book.read = !book.read;
-      repaintBookListToScreen();
+      if (e.target.closest(".read-btn")) {
+        book.read = !book.read;
+        repaintBookListToScreen();
+      } else if (e.target.closest(".delete-book-btn")) {
+        deleteBookFromLibrary(book.title);
+        repaintBookListToScreen();
+      }
+      console.log(myLibrary);
     }
   });
 });
